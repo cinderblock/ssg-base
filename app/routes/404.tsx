@@ -1,7 +1,7 @@
-import type { MetaFunction } from "react-router";
 import { Link } from "react-router";
+import type { Route } from "./+types/404";
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
   return [
     { title: "Page Not Found" },
     {

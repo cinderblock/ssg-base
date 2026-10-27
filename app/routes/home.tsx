@@ -1,19 +1,8 @@
-import type { MetaFunction } from "react-router";
+import { SITE, pageMeta } from "~/site";
+import type { Route } from "./+types/home";
 
-export const meta: MetaFunction = () => {
-  const title = "My Site";
-  const description = "A static site built with React Router and Vite.";
-  return [
-    { title },
-    { name: "description", content: description },
-    { property: "og:type", content: "website" },
-    { property: "og:title", content: title },
-    { property: "og:description", content: description },
-    { name: "twitter:card", content: "summary" },
-    { name: "twitter:title", content: title },
-    { name: "twitter:description", content: description },
-  ];
-};
+export const meta: Route.MetaFunction = () =>
+  pageMeta({ title: SITE.name, description: SITE.description, path: "/" });
 
 export default function Home() {
   return (

@@ -8,16 +8,24 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          rel="icon"
-          href="/favicon-light.svg"
+        <meta
+          name="theme-color"
+          content="#fafafa"
           media="(prefers-color-scheme: light)"
         />
-        <link
-          rel="icon"
-          href="/favicon-dark.svg"
+        <meta
+          name="theme-color"
+          content="#0f0f1a"
           media="(prefers-color-scheme: dark)"
         />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link
+          rel="icon"
+          href="/favicon-32.png"
+          sizes="32x32"
+          type="image/png"
+        />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <Meta />
         <Links />
         {import.meta.env.DEV && (

@@ -22,15 +22,36 @@ test.describe("Home Page", () => {
     );
   });
 
-  test("has Open Graph tags", async ({ page }) => {
+  test("has a canonical link and social cards", async ({ page }) => {
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      "https://example.com/",
+    );
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
       "content",
       "My Site",
     );
-    await expect(page.locator('meta[property="og:type"]')).toHaveAttribute(
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       "content",
-      "website",
+      "https://example.com/og.png",
     );
+    await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+      "content",
+      "summary_large_image",
+    );
+  });
+
+  test("serves its icons and social card", async ({ page, request }) => {
+    const hrefs = await page
+      .locator('link[rel="icon"], link[rel="apple-touch-icon"]')
+      .evaluateAll((links) => links.map((l) => l.getAttribute("href")!));
+    expect(hrefs).toHaveLength(3);
+    // og:image is absolute (production URL), so check its path here.
+    for (const href of [...hrefs, "/og.png"]) {
+      const response = await request.get(href);
+      expect(response.status(), href).toBe(200);
+      expect(response.headers()["content-type"], href).toMatch(/^image\//);
+    }
   });
 });
 
