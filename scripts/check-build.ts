@@ -5,8 +5,9 @@
 
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const client = join(import.meta.dirname, "..", "build", "client");
+const client = fileURLToPath(new URL("../build/client", import.meta.url));
 
 // The id of the "*" route in app/routes.ts. A prerendered page lists the
 // modules of the routes it matched, so this is in the not-found page only.

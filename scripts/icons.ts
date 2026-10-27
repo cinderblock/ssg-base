@@ -5,9 +5,9 @@
 
 import { chromium } from "@playwright/test";
 import { join } from "node:path";
-import { pathToFileURL } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
-const root = join(import.meta.dirname, "..");
+const root = fileURLToPath(new URL("..", import.meta.url));
 
 const outputs: {
   source: string;
