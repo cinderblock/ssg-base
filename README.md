@@ -1,16 +1,16 @@
 # SSG Base
 
-A boilerplate for static sites built with React Router 7, Vite, and TypeScript.
+A boilerplate for static sites built with React Router 8, Vite, and TypeScript.
 
 ## Stack
 
-- **React 19** + **React Router 7** — UI and routing
-- **Vite** — build tool and dev server
-- **TypeScript** — strict mode
+- **React 19** + **React Router 8** — UI and routing, prerendered to static HTML
+- **Vite 8** — build tool and dev server
+- **TypeScript 7** — strict mode
 - **Bun** — package manager and runtime
 - **Playwright** — end-to-end testing
 - **oxfmt** + **lefthook** — code formatting and pre-commit hooks
-- **Cloudflare Pages** — deployment (via GitHub Actions)
+- **Cloudflare Pages** — hosting, built from git (GitHub Actions runs CI)
 
 ## Getting Started
 
